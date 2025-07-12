@@ -1,7 +1,12 @@
 import ItemCount from "./ItemCount";
+import { useCart } from "../context/CartContext";
 
 const ItemDetail = ({ producto }) => {
-  const handleAdd = (qty) => alert(`Agregaste ${qty} a ${producto.title}`);
+  const { addItem } = useCart();
+
+  const handleAdd = (qty) => {
+    addItem(producto, qty);
+  };
 
   return (
     <div className="container mt-4">

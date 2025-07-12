@@ -1,15 +1,20 @@
-const CartWidget = ({ count = 0 }) => {
+import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
+
+const CartWidget = () => {
+  const { cartQuantity } = useCart();
+
   return (
-    <a href="#" className="text-white position-relative">
+    <Link to="/cart" className="text-white position-relative">
       <span role="img" aria-label="carrito" style={{ fontSize: "1.5rem" }}>
         🛒
       </span>
-      {count > 0 && (
+      {cartQuantity > 0 && (
         <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          {count}
+          {cartQuantity}
         </span>
       )}
-    </a>
+    </Link>
   );
 };
 
